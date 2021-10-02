@@ -1,3 +1,4 @@
+const { checkPrime } = require('crypto');
 const {guest} = require('./guest1')
 let reg_id = /^\d+$/;
 let reg_name_guest = /^[a-zA-Z]{1,30}$/;
@@ -36,8 +37,17 @@ checkPeriod = (period,price) => {
     }
 }
 
+checkPrice = () => {
+    price.forEach((price) => {
+        period.forEach((period) => {
+            price = period*50
+        })
+    })
+}
+checkPrice();
+
 module.exports={
     checkGuest : checkGuest,
-    checkPeriod : checkPeriod
-
+    checkPeriod : checkPeriod,
+    checkPrice : checkPrice
 }

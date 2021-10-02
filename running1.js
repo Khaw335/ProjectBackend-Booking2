@@ -74,7 +74,28 @@ http.createServer(function (req, res) {
                 console.log(err);
             }
             break;
-
+        case '/checkPeriod':
+            try {
+                let show = checkPeriod();
+                message += 'เสร็จสิ้น';
+                data += JSON.stringify(show);
+            } catch (err) {
+                status = 400;
+                message += (err);
+                console.log(err);
+            }
+            break;
+        case '/checkPrice':
+            try {
+                let show = checkPrice();
+                message += 'เสร็จสิ้น';
+                data += JSON.stringify(show);
+            } catch (err) {
+                status = 400;
+                message += (err);
+                console.log(err);
+            }
+            break;
             default: 
                 status = 404
                 message = 'path not found!'
