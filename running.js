@@ -5,6 +5,7 @@ var url = require('url');
 const {deleteRoom,addRoom,showRoom,searchType,room} = require('./room.js');
 const {addGuest,deleteGuest,showGuest,guest} = require('./guest');
 const {edit_booking,showBooking,showAllBooking,booking} = require('./booking');
+const { checkPrime } = require('crypto');
 
 http.createServer(function (req, res) {
 
@@ -76,6 +77,17 @@ http.createServer(function (req, res) {
         case '/showAllBooking':
             try {
                 let show = showAllBooking();
+                message += 'เสร็จสิ้น';
+                data += JSON.stringify(show);
+            } catch (err) {
+                status = 400;
+                message += (err);
+                console.log(err);
+            }
+            break;
+        case '/checkPrice':
+            try {
+                let show = checkPrice();
                 message += 'เสร็จสิ้น';
                 data += JSON.stringify(show);
             } catch (err) {
